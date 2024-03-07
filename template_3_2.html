@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lr 3 (2)</title>
+</head>
+<body>
+    {% macro book_cards(books, list_book) %}
+        {% if list_book[-1] > books|length or list_book[0] > books|length or list_book[0] < 0 %}
+            {% for book in books %}
+                <p>Автор: {{book.author}}<br>
+                Название: {{book.title}}<br>
+                Цена: {{book.price}}</p>
+            {% endfor %}
+        {% else %}
+            {% for i in range(books|length) %}
+                {% if i >= list_book[0] and i <= list_book[-1] %}
+                    <p>Автор: {{books[i].author}}<br>
+                    Название: {{books[i].title}}<br>
+                    Цена: {{books[i].price}}</p>
+                {% endif %}
+            {% endfor%}
+        {% endif %}
+    {% endmacro %}
+
+    <div> {{book_cards(books, list_book)}}</div>
+</body>
+</html>

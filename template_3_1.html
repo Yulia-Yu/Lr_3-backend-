@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Lr 3 (1) </title>
+</head>
+    <body>
+    {% macro color(colors, list_checked) %}
+      {% set list_colors = colors.split(" ") %}
+      {% for i in range(list_colors|length) %}
+
+        {% if i in list_checked %}
+          <input type="checkbox" name={{list_colors[i]}} value={{i}} checked>
+          {{list_colors[i]}}<br>
+        {% else %}
+          <input type="checkbox" name={{list_colors[i]}} value={{i}}>
+          {{list_colors[i]}}<br>
+        {% endif %}
+
+      {% endfor %}
+
+    {% endmacro %}
+
+    <form>
+      {{color(colors, list_checked)}}
+    </form>
+  </body>
+</html>
